@@ -1,9 +1,5 @@
 Python Complexity Classes
 
-In ICS-46 we will write low-level implementations of all of Python's data types
-and see/understand WHY these complexity classes apply. For now we just need to
-try to absorb (not memorize) this information, with some -but minimal- 
-justification.
 
 Binding a value to any name is O(1). Simple operators on integers (whose values
 are small: e.g., under 12 digits) like + or == are also O(1).
