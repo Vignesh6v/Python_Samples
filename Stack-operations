@@ -1,0 +1,48 @@
+# dup is to duplicate
+# pop will do the usual pop operations
+# evalute the expression using a stack
+
+from collections import deque
+
+def solution(S):
+    i=0
+    g = S.split()
+    q = deque(g)
+    s = deque()
+    c = len(q)
+    while(i < c):
+        f = False
+        try:
+            v = q.popleft()
+            val = int(v)
+        except ValueError:
+                try:
+                    if (v == 'DUP'):
+                        temp  = int(s.popleft())
+                        s.appendleft(temp)
+                        s.appendleft(temp)
+                        f = True
+                    elif (v== 'POP'):
+                        s.popleft()
+                        f = True
+                    elif (v != 'POP' or v != 'DUP'): 
+                        val1 = int(s.popleft())
+                        val2 = int(s.popleft())
+                        value = eval('{} {} {}'.format(val1, v, val2))
+                        s.appendleft(value)
+                        f = True
+                    else:
+                        return -1
+                except ValueError:
+                    return -1
+        if f == False: s.appendleft(v)
+        i +=1
+    if len(S) > 0: return s.popleft()  
+    else: return -1
+
+def main():
+    a = '5 DUP +'
+    v = solution(a)
+    print(v)
+
+if __name__=='__main__':main()
